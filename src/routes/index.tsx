@@ -48,7 +48,7 @@ function Dashboard() {
   return (
     <div className="space-y-8">
       <PageIntro
-        title="Welcome back 👋"
+        title="Welcome back"
         description="Your AI Workplace Productivity Assistant helps employees, graduates, administrators and managers automate everyday tasks — writing emails, summarizing meetings, planning work, researching topics and answering workplace questions."
       >
         <ReviewNotice />
