@@ -2,8 +2,11 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { runPrompt } from "./ai-gateway.server";
 import {
-  BASE_SYSTEM,
   CHAT_SYSTEM,
+  EMAIL_SYSTEM,
+  MEETING_SYSTEM,
+  PLANNER_SYSTEM,
+  RESEARCH_SYSTEM,
   chatPrompt,
   emailPrompt,
   meetingPrompt,
