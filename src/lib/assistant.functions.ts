@@ -24,11 +24,13 @@ const emailSchema = z.object({
 
 export const generateEmail = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => emailSchema.parse(d))
-  .handler(async ({ data }) => ({ text: await runPrompt(BASE_SYSTEM, emailPrompt(data)) }));
+  .handler(async ({ data }) => ({ text: await runPrompt(EMAIL_SYSTEM, emailPrompt(data)) }));
 
 export const summarizeMeeting = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => z.object({ notes: z.string().min(20) }).parse(d))
-  .handler(async ({ data }) => ({ text: await runPrompt(BASE_SYSTEM, meetingPrompt(data.notes)) }));
+  .handler(async ({ data }) => ({
+    text: await runPrompt(MEETING_SYSTEM, meetingPrompt(data.notes)),
+  }));
 
 const plannerSchema = z.object({
   tasks: z
@@ -45,14 +47,16 @@ const plannerSchema = z.object({
 
 export const generatePlan = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => plannerSchema.parse(d))
-  .handler(async ({ data }) => ({ text: await runPrompt(BASE_SYSTEM, plannerPrompt(data.tasks)) }));
+  .handler(async ({ data }) => ({
+    text: await runPrompt(PLANNER_SYSTEM, plannerPrompt(data.tasks)),
+  }));
 
 export const runResearch = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) =>
     z.object({ topic: z.string().min(3), level: z.string().min(1) }).parse(d),
   )
   .handler(async ({ data }) => ({
-    text: await runPrompt(BASE_SYSTEM, researchPrompt(data.topic, data.level)),
+    text: await runPrompt(RESEARCH_SYSTEM, researchPrompt(data.topic, data.level)),
   }));
 
 export const sendChat = createServerFn({ method: "POST" })
