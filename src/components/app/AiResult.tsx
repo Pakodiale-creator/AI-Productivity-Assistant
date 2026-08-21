@@ -2,6 +2,7 @@ import { AlertCircle, Copy, RefreshCw } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { toast } from "sonner";
 
+import { ReviewNotice } from "@/components/app/PageIntro";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -76,8 +77,11 @@ export function AiResult({
             </div>
           </div>
         ) : result ? (
-          <div className="ai-prose">
-            <ReactMarkdown>{result}</ReactMarkdown>
+          <div className="space-y-4">
+            <div className="ai-prose whitespace-pre-wrap">
+              <ReactMarkdown>{result}</ReactMarkdown>
+            </div>
+            <ReviewNotice />
           </div>
         ) : (
           <div className="rounded-lg border border-dashed border-border bg-muted/40 p-8 text-center">
