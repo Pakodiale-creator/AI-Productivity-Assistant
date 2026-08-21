@@ -189,6 +189,17 @@ function TaskPlannerPage() {
             <Button onClick={plan} disabled={loading}>
               {loading ? "Building plan…" : "Generate Plan"}
             </Button>
+            <Button
+              variant="ghost"
+              disabled={loading}
+              onClick={() => {
+                setTasks([newTask()]);
+                setResult(null);
+                setError(null);
+              }}
+            >
+              Clear
+            </Button>
           </div>
         </CardContent>
       </Card>

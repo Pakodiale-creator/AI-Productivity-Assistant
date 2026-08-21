@@ -107,9 +107,22 @@ function ResearchPage() {
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={research} disabled={loading}>
-            {loading ? "Researching…" : "Research"}
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={research} disabled={loading}>
+              {loading ? "Researching…" : "Research"}
+            </Button>
+            <Button
+              variant="ghost"
+              disabled={loading}
+              onClick={() => {
+                setTopic("");
+                setResult(null);
+                setError(null);
+              }}
+            >
+              Clear
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
