@@ -78,7 +78,7 @@ export function AiResult({
           </div>
         ) : result ? (
           <div className="space-y-4">
-            <div className="ai-prose whitespace-pre-wrap">
+            <div className="ai-prose">
               <ReactMarkdown>{result}</ReactMarkdown>
             </div>
             <ReviewNotice />
