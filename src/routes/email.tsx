@@ -151,9 +151,24 @@ function EmailPage() {
             />
           </div>
 
-          <Button onClick={generate} disabled={loading} className="w-full sm:w-auto">
-            {loading ? "Generating…" : "Generate Email"}
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={generate} disabled={loading} className="w-full sm:w-auto">
+              {loading ? "Generating…" : "Generate Email"}
+            </Button>
+            <Button
+              variant="ghost"
+              disabled={loading}
+              onClick={() => {
+                setPurpose("");
+                setContext("");
+                setOutcome("");
+                setResult(null);
+                setError(null);
+              }}
+            >
+              Clear
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
