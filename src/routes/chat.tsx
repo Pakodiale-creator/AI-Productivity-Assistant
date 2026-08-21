@@ -80,6 +80,24 @@ function ChatPage() {
         <ReviewNotice />
       </PageIntro>
 
+      {messages.length > 0 ? (
+        <div className="flex justify-end">
+          <Button
+            variant="ghost"
+            size="sm"
+            disabled={loading}
+            onClick={() => {
+              setMessages([]);
+              setInput("");
+              setError(null);
+            }}
+          >
+            Clear chat
+          </Button>
+        </div>
+      ) : null}
+
+
       <Card className="flex h-[62vh] min-h-[26rem] flex-col overflow-hidden shadow-[var(--shadow-card)]">
         <CardContent className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
           {messages.length === 0 && !loading ? (
